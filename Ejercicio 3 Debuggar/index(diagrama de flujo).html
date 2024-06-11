@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Diagrama de Flujo: Calculadora de Suma</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.15.0/flowchart.min.js"></script>
+</head>
+<body>
+    <h1>Calculadora de Suma</h1>
+    <p id="resultado">Resultado: </p>
+
+    <div id="diagrama" style="max-width: 600px;"></div>
+
+    <script>
+        var diagramaCode = `
+            st=>start: Inicio
+            op1=>operation: Declarar función sumarArray(arr)
+            op2=>operation: Inicializar suma = 0
+            op3=>operation: Iniciar bucle for con i = 0
+            cond1=>condition: ¿i < arr.length?
+            op4=>operation: Incrementar suma con arr[i]
+            op5=>operation: Incrementar i
+            e=>end: Fin
+
+            st->op1->op2->op3->cond1
+            cond1(yes)->op4->op5->op3
+            cond1(no)->e
+        `;
+
+        var diagrama = flowchart.parse(diagramaCode);
+        diagrama.drawSVG('diagrama');
+    </script>
+
+    <script>
+        function sumarArray(arr) {
+            let suma = 0;
+            for (let i = 0; i < arr.length; i++) { 
+                suma += arr[i];
+            }
+            return suma;
+        }
+
+        const numeros = [1, 2, 3, 4, 5];
+        const resultado = sumarArray(numeros);
+
+        document.getElementById("resultado").textContent = "Resultado: " + resultado;
+    </script>
+</body>
+</html>

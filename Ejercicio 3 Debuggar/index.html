@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio de Debugging</title>
+    
+</head>
+<body>
+    <h1>Calculadora de Suma</h1>
+    <p id="resultado">Resultado: </p>
+
+
+    <script>
+
+
+        function sumarArray(arr) {
+            
+            let suma = 0;
+            for (let i = 0; i <= arr.length; i++) { // hay un error en esta línea, se debe eliminar el "="
+                suma += arr[i];
+            }
+            return suma;
+
+
+        }
+
+
+        const numeros = [1, 2, 3, 4, 5];
+
+        const resultado = sumarArray(numeros);
+
+        document.getElementById("resultado").textContent = "Resultado: " + resultado;
+
+  
+    </script>
+</body>
+</html>
